@@ -1,2 +1,0 @@
-# myRssReader
-Created with CodeSandbox
