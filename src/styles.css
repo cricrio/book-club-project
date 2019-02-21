@@ -1,4 +1,8 @@
-.App {
+@import url("../../node_modules/normalize.css/normalize.css");
+
+body {
+  margin: 0;
+  height: 100vh;
   font-family: sans-serif;
-  text-align: center;
+  background-color: #eeeeee;
 }
