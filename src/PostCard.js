@@ -16,11 +16,7 @@ export const PostCard = ({ content, date, title }) => (
         theme="textSecondaryOnBackground"
         style={{ padding: "1rem" }}
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-        feugiat volutpat ultrices. In pharetra ultricies leo, eu molestie sem
-        luctus non. Etiam sed cursus ex, vitae molestie nisl. Nam hendrerit
-        dapibus ex eget lobortis. Sed urna neque, consequat vitae ultricies sit
-        amet, elementum vitae augue.
+        {content}
       </Typography>
     </CardPrimaryAction>
     <ListDivider />
@@ -30,7 +26,7 @@ export const PostCard = ({ content, date, title }) => (
           {title}
         </Typography>
         <Typography use="subtitle2" tag="div">
-          25/11/2018
+          {date.toLocaleDateString()}
         </Typography>
       </div>
     </CardActions>
