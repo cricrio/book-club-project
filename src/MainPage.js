@@ -12,8 +12,8 @@ const BlogRail = ({ title, posts }) => (
       {title}
     </Typography>
     <Rail>
-      {posts.map(post => (
-        <PostCard {...post} />
+      {posts.map(({ id, ...post }) => (
+        <PostCard key={id} {...post} />
       ))}
     </Rail>
   </>
@@ -23,7 +23,7 @@ export const MainPage = () => {
   const blogs = getBlogs();
   return (
     <div style={{ margin: "2rem" }}>
-      {blogs.map(blog => (
+      {blogs.map(({ id, ...blog }) => (
         <BlogRail {...blog} />
       ))}
     </div>
