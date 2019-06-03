@@ -7,8 +7,8 @@ import { TopBar } from "./TopBar";
 import { MainPage } from "./MainPage";
 
 import "./styles.css";
-import "@material/theme/dist/mdc.theme.css";
-import "@material/typography/dist/mdc.typography.css";
+import "normalize.css/normalize.css";
+import "./materialImports";
 
 const App = () => (
   <>
