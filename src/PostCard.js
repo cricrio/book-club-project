@@ -5,12 +5,14 @@ import { Chip, ChipSet } from "@rmwc/chip";
 import { Typography } from "@rmwc/typography";
 import { Avatar } from "@rmwc/avatar";
 
+import { Time } from "./Time";
+
 export const PostCard = ({ blog, content, date, title }) => (
   <Card style={{ marginBottom: "1rem", padding: "0 2rem 1rem" }}>
     <Typography use="headline4" tag="h2">
       {title}
     </Typography>
-    <div style={{ margin: "-1rem 0 1rem" }}>
+    <div style={{ margin: "-2.5rem 0 1rem" }}>
       <Avatar
         src={blog.picture}
         size="xlarge"
@@ -18,17 +20,19 @@ export const PostCard = ({ blog, content, date, title }) => (
         style={{ marginRight: "1rem" }}
       />
 
-      <Typography use="subtitle1" tag="span" theme="textSecondaryOnBackground">
-        {blog.owner} (il y a 4 heures)
+      <Typography use="headline6" tag="span" theme="textSecondaryOnBackground">
+        {blog.owner} - <Time date={date} />
+        <Typography
+          use="headline2"
+          tag="span"
+          theme="textSecondaryOnBackground"
+        >
+          {" "}
+        </Typography>
       </Typography>
     </div>
     <CardPrimaryAction>
-      <Typography
-        use="body1"
-        tag="div"
-        theme="textSecondaryOnBackground"
-        style={{}}
-      >
+      <Typography use="body1" tag="div" theme="textSecondaryOnBackground">
         {content}
       </Typography>
     </CardPrimaryAction>

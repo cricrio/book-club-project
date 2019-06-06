@@ -1,17 +1,26 @@
 import React from "react";
-import { SimpleTopAppBar, TopAppBarFixedAdjust } from "@rmwc/top-app-bar";
+import {
+  TopAppBar,
+  TopAppBarRow,
+  TopAppBarSection,
+  TopAppBarTitle,
+  TopAppBarFixedAdjust
+} from "@rmwc/top-app-bar";
+import { Typography } from "@rmwc/typography";
 
 export const TopBar = ({ title }) => (
   <>
-    <SimpleTopAppBar
-      title={title}
-      navigationIcon={{ onClick: () => console.log("Navigate") }}
-      actionItems={[
-        { onClick: () => console.log("Do Something"), use: "file_download" },
-        { onClick: () => console.log("Do Something"), use: "print" },
-        { onClick: () => console.log("Do Something"), use: "bookmark" }
-      ]}
-    />
+    <TopAppBar>
+      <TopAppBarRow>
+        <TopAppBarSection>
+          <TopAppBarTitle
+            style={{ color: "var(--mdc-theme-text-primary-on-background)" }}
+          >
+            <Typography use="headline4">{title}</Typography>
+          </TopAppBarTitle>
+        </TopAppBarSection>
+      </TopAppBarRow>
+    </TopAppBar>
     <TopAppBarFixedAdjust />
   </>
 );

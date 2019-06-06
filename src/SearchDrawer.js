@@ -10,10 +10,9 @@ import {
 
 import { List, ListItem } from "@rmwc/list";
 
-
 export const SearchDrawer = () => (
-  <Drawer>
-    <DrawerHeader>
+  <Drawer style={{ width: "100%" }}>
+    {/* <DrawerHeader>
       <DrawerTitle>DrawerHeader</DrawerTitle>
       <DrawerSubtitle>Subtitle</DrawerSubtitle>
     </DrawerHeader>
@@ -23,6 +22,6 @@ export const SearchDrawer = () => (
         <ListItem>Pizza</ListItem>
         <ListItem>Icecream</ListItem>
       </List>
-    </DrawerContent>
+    </DrawerContent> */}
   </Drawer>
 );

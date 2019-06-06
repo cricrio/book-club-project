@@ -1,8 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { ThemeProvider } from "@rmwc/theme";
-
 import { TopBar } from "./TopBar";
 import { MainPage } from "./MainPage";
 
@@ -12,15 +10,8 @@ import "./materialImports";
 
 const App = () => (
   <>
-    <ThemeProvider
-      options={{
-        primary: "black",
-        secondary: "blue"
-      }}
-    >
-      <TopBar title="MyRssFeeder" />
-      <MainPage />
-    </ThemeProvider>
+    <TopBar title="BookBlogs" />
+    <MainPage />
   </>
 );
 

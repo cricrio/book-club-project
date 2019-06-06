@@ -11,18 +11,16 @@ export const MainPage = () => {
   const posts = getPosts();
   console.log(posts);
   return (
-    <Grid>
-      <GridCell span="3">
+    <Grid align="left">
+      <GridCell span={3} phone={0}>
         <SearchDrawer />
       </GridCell>
-      <GridCell span="6">
-        <section>
+      <GridCell span={6} phone={4}>
           {posts.map(({ id, ...post }) => (
             <PostCard key={id} {...post} />
           ))}
-        </section>
       </GridCell>
-      <GridCell span="3">
+      <GridCell span={3} phone={0}>
         <SearchDrawer />
       </GridCell>
     </Grid>
