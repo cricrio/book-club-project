@@ -16,9 +16,9 @@ export const MainPage = () => {
         <SearchDrawer />
       </GridCell>
       <GridCell span={6} phone={4}>
-          {posts.map(({ id, ...post }) => (
-            <PostCard key={id} {...post} />
-          ))}
+        {posts.map(({ id, ...post }) => (
+          <PostCard key={id} {...post} />
+        ))}
       </GridCell>
       <GridCell span={3} phone={0}>
         <SearchDrawer />

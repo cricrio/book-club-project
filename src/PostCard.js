@@ -6,6 +6,7 @@ import { Typography } from "@rmwc/typography";
 import { Avatar } from "@rmwc/avatar";
 
 import { Time } from "./Time";
+import { BookInfo } from "./BookInfo";
 
 export const PostCard = ({ blog, content, date, title }) => (
   <Card style={{ marginBottom: "1rem", padding: "0 2rem 1rem" }}>
@@ -31,11 +32,24 @@ export const PostCard = ({ blog, content, date, title }) => (
         </Typography>
       </Typography>
     </div>
-    <CardPrimaryAction>
-      <Typography use="body1" tag="div" theme="textSecondaryOnBackground">
-        {content}
-      </Typography>
-    </CardPrimaryAction>
+    <div>
+      {/* <div>
+            <div>
+            Can be improved with css
+    */}
+      <div>
+        <BookInfo
+          style={{
+            display: "inline-box",
+            float: "left",
+            marginRight: "1rem"
+          }}
+        />
+        <Typography use="body1" tag="div" theme="textSecondaryOnBackground">
+          {content}
+        </Typography>
+      </div>
+    </div>
     <ChipSet>
       <Chip label="romance" />
       <Chip label="fantasy" />
