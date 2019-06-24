@@ -9,3 +9,4 @@ import '@material/chips/dist/mdc.chips.css';
 
 //rmwc addons
 import "@rmwc/avatar/avatar.css";
+import '@rmwc/icon/icon.css';

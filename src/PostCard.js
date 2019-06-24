@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardPrimaryAction } from "@rmwc/card";
+import { Card } from "@rmwc/card";
 import { Chip, ChipSet } from "@rmwc/chip";
 
 import { Typography } from "@rmwc/typography";
@@ -20,17 +20,24 @@ export const PostCard = ({ blog, content, date, title }) => (
         name="Natalia Alianovna Romanova"
         style={{ marginRight: "1rem" }}
       />
-
-      <Typography use="headline6" tag="span" theme="textSecondaryOnBackground">
-        {blog.owner} - <Time date={date} />
+      <div style={{ display: "inline-block", verticalAlign: "middle" }}>
         <Typography
-          use="headline2"
+          use="headline6"
           tag="span"
           theme="textSecondaryOnBackground"
         >
-          {" "}
+          {blog.owner} - <Time date={date} />
+          <Typography
+            use="headline2"
+            tag="span"
+            theme="textSecondaryOnBackground"
+          />
         </Typography>
-      </Typography>
+        <ChipSet>
+          <Chip label="romance" />
+          <Chip label="fantasy" />
+        </ChipSet>
+      </div>
     </div>
     <div>
       {/* <div>
@@ -50,9 +57,5 @@ export const PostCard = ({ blog, content, date, title }) => (
         </Typography>
       </div>
     </div>
-    <ChipSet>
-      <Chip label="romance" />
-      <Chip label="fantasy" />
-    </ChipSet>
   </Card>
 );

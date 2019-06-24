@@ -1,28 +1,20 @@
 import React from "react";
 
-import { PostCard } from "./PostCard";
-
-import { getPosts } from "./data";
-import { SearchDrawer } from "./SearchDrawer";
-
 import { Grid, GridCell } from "@rmwc/grid";
 
+import { getCafes } from "./data";
+import { CafeInfo } from "./CafeInfo";
+
+const makeCafes = cafe => <CafeInfo {...cafe} />;
 export const MainPage = () => {
-  const posts = getPosts();
-  console.log(posts);
+  const cafes = getCafes();
   return (
     <Grid align="left">
-      <GridCell span={3} phone={0}>
-        <SearchDrawer />
+      <GridCell span={2} phone={0} tablet={1} />
+      <GridCell span={8} phone={4} tablet={10}>
+        {cafes.map(makeCafes)}
       </GridCell>
-      <GridCell span={6} phone={4}>
-        {posts.map(({ id, ...post }) => (
-          <PostCard key={id} {...post} />
-        ))}
-      </GridCell>
-      <GridCell span={3} phone={0}>
-        <SearchDrawer />
-      </GridCell>
+      <GridCell span={2} phone={0} tablet={1} />
     </Grid>
   );
 };
