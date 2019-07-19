@@ -8,7 +8,7 @@ export const MainPage = () => {
   return <StyledDiv className="MainPage">{cafes.map(makeCafes)}</StyledDiv>;
 };
 
-const makeCafes = cafe => <CafeInfo {...cafe} />;
+const makeCafes = cafe => <CafeInfo {...cafe} key={cafe.id} />;
 
 const StyledDiv = styled.div`
   display: flex;

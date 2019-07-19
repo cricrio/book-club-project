@@ -8,10 +8,18 @@ import "./styles.css";
 import "normalize.css/normalize.css";
 import "./materialImports";
 
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 const App = () => (
   <>
     <TopBar title="BookBlogs" />
-    <MainPage />
+    <Router>
+      <Route path="/" exact component={MainPage} />
+      <Route
+        path="/club/:id"
+        component={({ match }) => <h1>Club {match.params.id}</h1>}
+      />
+    </Router>
   </>
 );
 
