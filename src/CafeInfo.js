@@ -1,16 +1,16 @@
 import React from "react";
 import { Typography } from "@rmwc/typography";
-
+import {UnderatedLink} from "./UndecoratedLink";
 import styled from "styled-components";
 
 // TODO this component is not responcive need to improve for mobile use.
 
-export const CafeInfo = ({ name, description, city, image, isMember }) => (
+export const CafeInfo = ({ name, description, city, image, isMember,id }) => (
   <CafeCard className="cafeInfo">
     <CafeImage src={image} alt={`de ${name}`} />
     <CafeData>
       <CafeName tag="h2" use="headline6">
-        {name}
+       <UnderatedLink to={`/cafe/${id}`}> {name}</UnderatedLink>
       </CafeName>
       <CafeName
         tag="h2"

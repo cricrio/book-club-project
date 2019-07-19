@@ -7,6 +7,7 @@ import {
   TopAppBarFixedAdjust
 } from "@rmwc/top-app-bar";
 import { Typography } from "@rmwc/typography";
+import {UnderatedLink} from './UndecoratedLink';
 
 export const TopBar = ({ title }) => (
   <>
@@ -16,7 +17,7 @@ export const TopBar = ({ title }) => (
           <TopAppBarTitle
             style={{ color: "var(--mdc-theme-text-primary-on-background)" }}
           >
-            <Typography use="headline4">{title}</Typography>
+          <UnderatedLink to={`/`}>  <Typography use="headline4">{title}</Typography></UnderatedLink>
           </TopAppBarTitle>
         </TopAppBarSection>
       </TopAppBarRow>

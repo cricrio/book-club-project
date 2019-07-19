@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 
 import { TopBar } from "./TopBar";
 import { MainPage } from "./MainPage";
+import {CafePage} from "./CafePage";
 
 import "./styles.css";
 import "normalize.css/normalize.css";
@@ -11,16 +12,16 @@ import "./materialImports";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 const App = () => (
-  <>
+  <Router>
     <TopBar title="BookBlogs" />
-    <Router>
+    <main>
       <Route path="/" exact component={MainPage} />
       <Route
-        path="/club/:id"
-        component={({ match }) => <h1>Club {match.params.id}</h1>}
+        path="/cafe/:id"
+        component={CafePage}
       />
-    </Router>
-  </>
+    </main>
+  </Router>
 );
 
 const rootElement = document.getElementById("root");

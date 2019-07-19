@@ -25,13 +25,11 @@ body {
   --mdc-theme-text-icon-on-dark: rgba(255, 255, 255, 0.5);
 
   margin: 0;
-  width: 100vw;
   height: 100vh;
   font-family: sans-serif;
   background-color: var(--mdc-theme-background);
 }
 
 html {
-  width: 100vw;
   height: 100vh;
 }
