@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { getCafes } from "./data";
-import { CafeInfo } from "./CafeInfo";
+import { getCafes } from "../data";
+import { CafeInfo } from "../components/CafeInfo";
 
 export const MainPage = () => {
   const cafes = getCafes();
@@ -16,6 +16,6 @@ const StyledDiv = styled.div`
   margin-top: 2rem;
 
   @media screen and (min-width: 720px) {
-    align-items: center; 
+    align-items: center;
   }
 `;

@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import { getCafes } from "./data";
-import { CafePageTop } from "./CafePageTop";
+import { getCafes } from "../data";
+import { CafePageTop } from "../components/CafePageTop";
 
 export const CafePage = ({ match }) => {
   const cafe = getCafes()[match.params.id];
