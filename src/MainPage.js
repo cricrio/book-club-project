@@ -13,6 +13,9 @@ const makeCafes = cafe => <CafeInfo {...cafe} key={cafe.id} />;
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin-top: 2rem;
+
+  @media screen and (min-width: 720px) {
+    align-items: center; 
+  }
 `;

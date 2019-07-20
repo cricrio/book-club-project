@@ -44,7 +44,10 @@ const Container = styled.div`
 `;
 
 const CafeAlignImage = styled(CafeImage)`
-  align-self: flex-end;
+  align-self: center;
+  @media screen and (min-width: 720px) {
+    align-self: flex-end;
+  }
 `;
 
 const CafeName = styled.h1`
