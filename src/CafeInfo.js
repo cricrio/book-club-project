@@ -1,16 +1,17 @@
 import React from "react";
 import { Typography } from "@rmwc/typography";
-import {UnderatedLink} from "./UndecoratedLink";
+import { UnderatedLink } from "./UndecoratedLink";
+import { CafeButton } from "./CafeButton";
 import styled from "styled-components";
 
 // TODO this component is not responcive need to improve for mobile use.
 
-export const CafeInfo = ({ name, description, city, image, isMember,id }) => (
+export const CafeInfo = ({ name, description, city, image, isMember, id }) => (
   <CafeCard className="cafeInfo">
     <CafeImage src={image} alt={`de ${name}`} />
     <CafeData>
       <CafeName tag="h2" use="headline6">
-       <UnderatedLink to={`/cafe/${id}`}> {name}</UnderatedLink>
+        <UnderatedLink to={`/cafe/${id}`}> {name}</UnderatedLink>
       </CafeName>
       <CafeName
         tag="h2"
@@ -26,21 +27,12 @@ export const CafeInfo = ({ name, description, city, image, isMember,id }) => (
       <CafeCardAction>
         <CafeAction>6 membres</CafeAction>
         <CafeAction>
-          <JoinButton isMember={isMember}>
-            {isMember ? "Rejoindre" : "Quitter"}
-          </JoinButton>
+          <CafeButton isMember={isMember} />
         </CafeAction>
       </CafeCardAction>
     </CafeData>
   </CafeCard>
 );
-
-const JoinButton = styled.button`
-  background-color: inherit;
-  padding: 0.25rem;
-  border: 2px solid ${({ isMember }) => (isMember ? "royalblue" : "red")};
-  border-radius: 4px;
-`;
 
 const CafeCard = styled.section`
   display: flex;
