@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import { CafeImage } from "./CafeImage";
 import { CafeButton } from "./CafeButton";
-
 export const CafePageTop = ({
   name,
   image,
@@ -16,16 +15,18 @@ export const CafePageTop = ({
 }) => (
   <Container>
     <CafeAlignImage src={image} />
-    <div>
+    <div style={{ marginTop: 0 }}>
       <CafeName>{name}</CafeName>
       <CafeCity>{city}</CafeCity>
       <div>
-        {memberTotal} membres - groupe {cafeType}
+        <b>{memberTotal} </b> membres - groupe <b>{cafeType}</b>
       </div>
       <div>
-        {meetupTotal} rencontres - {postTotal} posts
+        <b>{meetupTotal} </b> rencontres - <b> {postTotal || 5} </b> posts
       </div>
-      <CafeNextMeetup>Prochaine rencontre le 31 juillet 2019</CafeNextMeetup>
+      <CafeNextMeetup>
+        Prochaine rencontre le <b>lun. 22 juil., 9h00</b>
+      </CafeNextMeetup>
       <StyledCafeButton isMember={isMember} />
     </div>
   </Container>
@@ -36,6 +37,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: flex-start;
   background-color: white;
+  margin-top: 0;
 
   @media screen and (min-width: 720px) {
     flex-direction: row;
@@ -44,11 +46,14 @@ const Container = styled.div`
 `;
 
 const CafeAlignImage = styled(CafeImage)`
-  align-self: flex-end;
+  align-self: center;
+  @media screen and (min-width: 720px) {
+    align-self: flex-end;
+  }
 `;
 
 const CafeName = styled.h1`
-  margin-top: 1rem;
+  margin-top: 0rem;
 `;
 const CafeCity = styled.h2`
   margin-top: -1rem;

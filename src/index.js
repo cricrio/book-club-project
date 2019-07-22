@@ -1,9 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
 import { TopBar } from "./TopBar";
 import { MainPage } from "./MainPage";
-import {CafePage} from "./CafePage";
+import { CafePage } from "./CafePage";
 
 import "./styles.css";
 import "normalize.css/normalize.css";
@@ -16,10 +15,7 @@ const App = () => (
     <TopBar title="BookBlogs" />
     <main>
       <Route path="/" exact component={MainPage} />
-      <Route
-        path="/cafe/:id"
-        component={CafePage}
-      />
+      <Route path="/cafe/:id" component={CafePage} />
     </main>
   </Router>
 );
