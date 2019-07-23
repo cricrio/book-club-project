@@ -32,11 +32,18 @@ const cafes = [
     image: "https://rmwc.io/images/backgrounds/mb-bg-fb-16.png",
     city: "Le Mans",
     isMember: true,
+    memberTotal: 653,
+    meetupTotal: 23,
+    cafeType: "local",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque ex, blandit a lacus sed, dignissim sodales nibh. Suspendisse ipsum nulla, consequat eu libero sed, venenatis aliquam quam. "
   },
+
   {
     id: 2,
+    memberTotal: 653,
+    meetupTotal: 23,
+    cafeType: "local",
     name: "Petit cafe du Mans",
     isMember: false,
     image: "https://rmwc.io/images/backgrounds/mb-bg-fb-16.png",
@@ -47,6 +54,9 @@ const cafes = [
   {
     id: 3,
     name: "Petit cafe du Mans",
+    memberTotal: 653,
+    meetupTotal: 23,
+    cafeType: "local",
     isMember: false,
     image: "https://rmwc.io/images/backgrounds/mb-bg-fb-16.png",
     city: "Le Mans",

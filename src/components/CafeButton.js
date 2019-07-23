@@ -8,8 +8,14 @@ export const CafeButton = ({ isMember, ...props }) => (
 );
 
 const Button = styled.button`
+  cursor: pointer;
   background-color: inherit;
   padding: 0.25rem;
   border: 2px solid ${({ isMember }) => (isMember ? "royalblue" : "red")};
   border-radius: 4px;
+
+  &:hover {
+    color: white;
+    background-color: ${({ isMember }) => (isMember ? "royalblue" : "red")};
+  }
 `;

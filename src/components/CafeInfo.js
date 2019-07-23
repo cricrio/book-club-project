@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography } from "@rmwc/typography";
-import { UnderatedLink } from "./UndecoratedLink";
+import { UndecoratedLink } from "./UndecoratedLink";
 import { CafeButton } from "./CafeButton";
 import styled from "styled-components";
 
@@ -11,7 +11,7 @@ export const CafeInfo = ({ name, description, city, image, isMember, id }) => (
     <CafeImage src={image} alt={`de ${name}`} />
     <CafeData>
       <CafeName tag="h2" use="headline6">
-        <UnderatedLink to={`/cafe/${id}`}> {name}</UnderatedLink>
+        <UndecoratedLink to={`/cafe/${id}`}> {name}</UndecoratedLink>
       </CafeName>
       <CafeName
         tag="h2"
@@ -25,7 +25,9 @@ export const CafeInfo = ({ name, description, city, image, isMember, id }) => (
         {description}
       </CafeDescription>
       <CafeCardAction>
-        <CafeAction>6 membres</CafeAction>
+        <CafeAction>
+          <b>6</b> membres
+        </CafeAction>
         <CafeAction>
           <CafeButton isMember={isMember} />
         </CafeAction>
