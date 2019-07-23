@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { TopBar } from "./TopBar";
-import { MainPage } from "./MainPage";
-import { CafePage } from "./CafePage";
+
+import { TopBar } from "./components/TopBar";
+import { MainPage } from "./pages/MainPage";
+import { CafePage } from "./pages/CafePage";
 
 import "./styles.css";
 import "normalize.css/normalize.css";
