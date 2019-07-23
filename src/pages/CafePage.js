@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { getCafes } from "../data";
 import { CafePageTop } from "../components/CafePageTop";
+import { Tab, Tabs } from "../components/tabs";
 
 export const CafePage = ({ match }) => {
   const cafe = getCafes()[match.params.id];
@@ -15,6 +16,10 @@ export const CafePage = ({ match }) => {
       <CafePageTop {...cafe} />
       <h2>À propos</h2>
       <p>{description}</p>
+      <Tabs>
+        <Tab title={"discution"}>This is discution tab</Tab>
+        <Tab title={"rencontre"}>This is rencontre tab</Tab>
+      </Tabs>
     </Container>
   );
 };
