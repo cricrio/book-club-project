@@ -1,25 +1,45 @@
 import React from "react";
+import { Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 
 import { getCafes } from "../data";
 import { CafePageTop } from "../components/CafePageTop";
-import { Tab, Tabs } from "../components/tabs";
+import { CafeNav, CafeNavLink } from "../components/CafeNav";
+import { InDevelopment } from "../components/InDevelopment";
+import { CafePageInfo } from "../components/CafePageInfo";
 
 export const CafePage = ({ match }) => {
-  const cafe = getCafes()[match.params.id];
+  console.log(match);
+  const cafeId = match.params.id;
+  const cafe = getCafes()[cafeId];
   if (!cafe) {
     return null;
   }
-  const { description } = cafe;
+
+  const cafeUrl = `/cafe/${cafeId}`;
+  const routes = {
+    about: `${cafeUrl}/a-propos`,
+    discution: `${cafeUrl}/discution`,
+    rencontres: `${cafeUrl}/rencontres`,
+    livres: `${cafeUrl}/livres`
+  };
+
   return (
     <Container>
       <CafePageTop {...cafe} />
-      <h2>À propos</h2>
-      <p>{description}</p>
-      <Tabs>
-        <Tab title={"discution"}>This is discution tab</Tab>
-        <Tab title={"rencontre"}>This is rencontre tab</Tab>
-      </Tabs>
+      <CafeNav>
+        <CafeNavLink to={routes.about}>À propos</CafeNavLink>
+        <CafeNavLink to={routes.discution}>Discution</CafeNavLink>
+        <CafeNavLink to={routes.rencontres}>Rencontres</CafeNavLink>
+        <CafeNavLink to={routes.livres}>Livres</CafeNavLink>
+      </CafeNav>
+
+      <Switch>
+        <Route exact path={routes.discution} component={InDevelopment} />
+        <Route exact path={routes.rencontres} component={InDevelopment} />
+        <Route exact path={routes.livres} component={InDevelopment} />
+        <Route component={() => <CafePageInfo cafe={cafe} />} />
+      </Switch>
     </Container>
   );
 };
@@ -28,5 +48,6 @@ const Container = styled.div`
   background-color: white;
   max-width: 720px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem 2rem;
+  min-height: 100vh;
 `;
