@@ -17,24 +17,21 @@ export const CafePage = ({ match }) => {
   }
 
   const cafeUrl = `/cafe/${cafeId}`;
-  const routes = {
-    about: `${cafeUrl}/a-propos`,
-    discution: `${cafeUrl}/discution`,
-    rencontres: `${cafeUrl}/rencontres`,
-    livres: `${cafeUrl}/livres`
-  };
+  const routes = generateRoutes(cafeUrl);
 
   return (
     <Container>
       <CafePageTop {...cafe} />
       <CafeNav>
         <CafeNavLink to={routes.about}>À propos</CafeNavLink>
+        <CafeNavLink to={routes.members}>Members</CafeNavLink>
         <CafeNavLink to={routes.discution}>Discution</CafeNavLink>
         <CafeNavLink to={routes.rencontres}>Rencontres</CafeNavLink>
         <CafeNavLink to={routes.livres}>Livres</CafeNavLink>
       </CafeNav>
 
       <Switch>
+        <Route exact path={routes.members} component={InDevelopment} />
         <Route exact path={routes.discution} component={InDevelopment} />
         <Route exact path={routes.rencontres} component={InDevelopment} />
         <Route exact path={routes.livres} component={InDevelopment} />
@@ -43,6 +40,12 @@ export const CafePage = ({ match }) => {
     </Container>
   );
 };
+
+const generateRoutes = cafeUrl =>
+  ["about", "members", "discution", "rencontres", "livres", "membres"].reduce(
+    (routes, r) => ({ [r]: `${cafeUrl}/${r}`, ...routes }),
+    {}
+  );
 
 const Container = styled.div`
   background-color: white;

@@ -13,7 +13,7 @@ export const CafePageTop = ({
   memberTotal,
   isMember
 }) => (
-  <Container>
+  <Container className="CafePageTop">
     <CafeAlignImage src={image} />
     <div style={{ marginTop: 0 }}>
       <CafeName>{name}</CafeName>
@@ -65,4 +65,3 @@ const CafeNextMeetup = styled.div`
 const StyledCafeButton = styled(CafeButton)`
   margin-top: 1rem;
 `;
-

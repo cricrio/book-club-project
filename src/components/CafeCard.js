@@ -4,23 +4,23 @@ import { UndecoratedLink } from "./UndecoratedLink";
 import { CafeButton } from "./CafeButton";
 import styled from "styled-components";
 
-// TODO this component is not responcive need to improve for mobile use.
+// TODO remove rmwc depency
 
-export const CafeInfo = ({ name, description, city, image, isMember, id }) => (
-  <CafeCard className="cafeInfo">
+export const CafeCard = ({ name, description, city, image, isMember, id }) => (
+  <Card className="cafeInfo">
     <CafeImage src={image} alt={`de ${name}`} />
     <CafeData>
       <CafeName tag="h2" use="headline6">
         <UndecoratedLink to={`/cafe/${id}`}> {name}</UndecoratedLink>
       </CafeName>
-      <CafeName
+      <CafeCity
         tag="h2"
         use="headline6"
         theme="textSecondaryOnBackground"
         style={{ marginTop: "-0.5rem" }}
       >
         {city}
-      </CafeName>
+      </CafeCity>
       <CafeDescription tag="p" theme="textSecondaryOnBackground" maxline={4}>
         {description}
       </CafeDescription>
@@ -33,26 +33,32 @@ export const CafeInfo = ({ name, description, city, image, isMember, id }) => (
         </CafeAction>
       </CafeCardAction>
     </CafeData>
-  </CafeCard>
+  </Card>
 );
 
-const CafeCard = styled.section`
+const Card = styled.section`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-bottom: 2rem;
   background-color: white;
-  width: 600px;
+  align-items: center;
+  width: 300px;
   border-radius: 4px;
   overflow: hidden;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
     rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+
+  @media screen and (min-width: 720px) {
+    width: 600px;
+    flex-direction: row;
+  }
 `;
 
 const CafeImage = styled.img`
   display: block;
   height: 200px;
   width: 200px;
-  margin: 0;
+  margin: 1rem;
 `;
 
 const CafeData = styled.div`
@@ -65,6 +71,11 @@ const CafeData = styled.div`
   height: 200px;
 `;
 
+const CafeCity = styled(Typography)`
+  padding: 0 1rem;
+  margin: 0;
+  margin-top: -0.5rem;
+`;
 const CafeName = styled(Typography)`
   padding: 0 1rem;
   margin: 0;
