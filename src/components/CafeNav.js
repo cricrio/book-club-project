@@ -4,12 +4,15 @@ import styled from "styled-components";
 
 import { UndecoratedLink } from "./UndecoratedLink";
 
+//Ca be improve for mobile use
 export const CafeNav = styled.ul`
   display: flex;
   margin: 1rem 0;
   padding-left: 0;
   border-style: solid none;
   border-width: thin;
+  overflow: hidden;
+  overflow-x: auto;
 `;
 
 export const CafeNavItem = styled.li`
