@@ -28,7 +28,7 @@ const postGenerator = (_, index) => ({
 const cafes = [
   {
     id: 1,
-    name: "Petit cafe du Mans",
+    name: "Petit cafe du Mans Lorem ipsum dolor sit amet",
     image: "https://rmwc.io/images/backgrounds/mb-bg-fb-16.png",
     city: "Le Mans",
     isMember: true,
@@ -44,12 +44,12 @@ const cafes = [
     memberTotal: 653,
     meetupTotal: 23,
     cafeType: "local",
-    name: "Petit cafe du Mans",
+    name: "Petit cafe du Mans Lorem  Lorem ipsum hghghfhfji",
     isMember: false,
     image: "https://rmwc.io/images/backgrounds/mb-bg-fb-16.png",
     city: "Le Mans",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque ex, blandit a lacus sed, dignissim sodales nibh. Suspendisse ipsum nulla, consequat eu libero sed, venenatis aliquam quam. Mauris vitae tincidunt diam, in ullamcorper velit. Maecenas risus velit, consectetur vitae laoreet nec, semper vitae lectus. Nunc interdum augue nec sollicitudin tincidunt. Aenean maximus, metus in pulvinar sagittis, velit nunc dapibus quam, vitae ultrices est ex vel diam. Ut porta et metus ac auctor. Aliquam elit nisi, sodales a pulvinar vitae, faucibus ac augue. Sed imperdiet eu libero eget bibendum. Aliquam commodo interdum diam, ut pulvinar lectus feugiat et. Proin laoreet mollis neque, sit amet sollicitudin tortor facilisis pulvinar. Cras finibus quam odio, vel porttitor mi mattis sed. Sed malesuada leo mi, in convallis elit consectetur nec. Suspendisse sed ultricies velit."
+      "Lorem ipsum dolor sit amet,   elit. Donec neque ex, blandit a lacus sed, dignissim sodales nibh. Suspendisse ipsum nulla, consequat eu libero sed, venenatis aliquam quam. Mauris vitae tincidunt diam, in ullamcorper velit. Maecenas risus velit, consectetur vitae laoreet nec, semper vitae lectus. Nunc interdum augue nec sollicitudin tincidunt. Aenean maximus, metus in pulvinar sagittis, velit nunc dapibus quam, vitae ultrices est ex vel diam. Ut porta et metus ac auctor. Aliquam elit nisi, sodales a pulvinar vitae, faucibus ac augue. Sed imperdiet eu libero eget bibendum. Aliquam commodo interdum diam, ut pulvinar lectus feugiat et. Proin laoreet mollis neque, sit amet sollicitudin tortor facilisis pulvinar. Cras finibus quam odio, vel porttitor mi mattis sed. Sed malesuada leo mi, in convallis elit consectetur nec. Suspendisse sed ultricies velit."
   },
   {
     id: 3,

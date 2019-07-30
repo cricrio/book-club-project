@@ -9,7 +9,6 @@ import { InDevelopment } from "../components/InDevelopment";
 import { CafePageInfo } from "../components/CafePageInfo";
 
 export const CafePage = ({ match }) => {
-  console.log(match);
   const cafeId = match.params.id;
   const cafe = getCafes()[cafeId];
   if (!cafe) {

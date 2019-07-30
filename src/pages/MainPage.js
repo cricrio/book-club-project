@@ -1,12 +1,32 @@
 import React from "react";
 import styled from "styled-components";
-import { getCafes } from "../data";
+
+import { Query } from "react-apollo";
+import { gql } from "apollo-boost";
+
 import { CafeCard } from "../components/CafeCard";
 
-export const MainPage = () => {
-  const cafes = getCafes();
-  return <StyledDiv className="MainPage">{cafes.map(makeCafes)}</StyledDiv>;
-};
+const query = gql`
+  {
+    cafe {
+      id
+      name
+      description
+      pic
+    }
+  }
+`;
+
+export const MainPage = () => (
+  <Query query={query}>
+    {({ loading, error, data }) => {
+      if (loading) return <p>Loading...</p>;
+      if (error) return <p>Error :(</p>;
+      const cafes = data.cafe.map(makeCafes);
+      return <StyledDiv className="MainPage">{cafes}</StyledDiv>;
+    }}
+  </Query>
+);
 
 const makeCafes = cafe => <CafeCard {...cafe} key={cafe.id} />;
 

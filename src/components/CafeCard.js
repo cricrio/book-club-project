@@ -1,55 +1,53 @@
 import React from "react";
+import styled from "styled-components";
+
 import { Typography } from "@rmwc/typography";
 import { UndecoratedLink } from "./UndecoratedLink";
 import { CafeButton } from "./CafeButton";
-import styled from "styled-components";
+import { Card } from "../layout/Card";
+import { Chunk } from "../layout/Chunk";
 
 // TODO remove rmwc depency
 
-export const CafeCard = ({ name, description, city, image, isMember, id }) => (
-  <Card className="cafeInfo">
-    <CafeImage src={image} alt={`de ${name}`} />
-    <CafeData>
-      <CafeName tag="h2" use="headline6">
-        <UndecoratedLink to={`/cafe/${id}`}> {name}</UndecoratedLink>
-      </CafeName>
-      <CafeCity
-        tag="h2"
-        use="headline6"
-        theme="textSecondaryOnBackground"
-        style={{ marginTop: "-0.5rem" }}
-      >
-        {city}
-      </CafeCity>
-      <CafeDescription tag="p" theme="textSecondaryOnBackground" maxline={4}>
-        {description}
-      </CafeDescription>
-      <CafeCardAction>
-        <CafeAction>
-          <b>6</b> membres
-        </CafeAction>
-        <CafeAction>
-          <CafeButton isMember={isMember} />
-        </CafeAction>
-      </CafeCardAction>
-    </CafeData>
-  </Card>
+export const CafeCard = ({ name, description, city, pic, isMember, id }) => (
+  <Container className="cafeInfo">
+    <CafeImage src={pic} alt={`de ${name}`} />
+    <Chunk style={{ width: "85%" }}>
+      <Chunk>
+        <Typography tag="h2" use="headline6">
+          <UndecoratedLink to={`/cafe/${id}`}> {name}</UndecoratedLink>
+        </Typography>
+        <Typography tag="h2" use="headline6" theme="textSecondaryOnBackground">
+          {city}
+        </Typography>
+      </Chunk>
+      <Chunk>
+        <CafeDescription tag="p" theme="textSecondaryOnBackground" maxline={4}>
+          {description}
+        </CafeDescription>
+      </Chunk>
+    </Chunk>
+    <CafeCardAction>
+      <Chunk>
+        <b>6</b> membres
+      </Chunk>
+      <Chunk>
+        <CafeButton isMember={isMember} />
+      </Chunk>
+    </CafeCardAction>
+  </Container>
 );
 
-const Card = styled.section`
+const Container = styled(Card)`
   display: flex;
   flex-direction: column;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   background-color: white;
   align-items: center;
   width: 300px;
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px,
-    rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
 
   @media screen and (min-width: 720px) {
-    width: 600px;
+    width: 800px;
     flex-direction: row;
   }
 `;
@@ -61,45 +59,25 @@ const CafeImage = styled.img`
   margin: 1rem;
 `;
 
-const CafeData = styled.div`
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  justify-content: space-between;
-  vertical-align: top;
-  margin: 0;
-  height: 200px;
-`;
-
-const CafeCity = styled(Typography)`
-  padding: 0 1rem;
-  margin: 0;
-  margin-top: -0.5rem;
-`;
-const CafeName = styled(Typography)`
-  padding: 0 1rem;
-  margin: 0;
-`;
-
 const CafeDescription = styled(Typography)`
   box-sizing: border-box;
-  flex-basis: 68%;
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 1rem;
-  max-height: ${props => props.maxline + 1 + "rem"};
-  padding: 1rem 1rem;
-  margin: 0;
+  max-height: ${props => props.maxline + "rem"};
 `;
 
 const CafeCardAction = styled.div`
   display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  text-align: center;
   width: 100%;
-  bottom: 0;
-  display: flex;
-  justify-content: space-around;
-`;
+  padding: 1rem;
 
-const CafeAction = styled.div`
-  padding: 1rem 0;
+  @media screen and (min-width: 720px) {
+    flex-direction: column;
+    width: 350px;
+    padding: 2rem;
+  }
 `;

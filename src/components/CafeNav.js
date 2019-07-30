@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { UndecoratedLink } from "./UndecoratedLink";
 
 //Ca be improve for mobile use
+//TODO hide scrollbar
 export const CafeNav = styled.ul`
   display: flex;
   margin: 1rem 0;

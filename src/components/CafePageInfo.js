@@ -1,5 +1,8 @@
 import React from "react";
 import { CafeMembers } from "./CafeMembers";
+import { CafeMeetupCard } from "./CafeMeetupCard";
+import { Section } from "../layout/Section";
+import { SectionTitle } from "../layout/SectionTitle";
 
 const members = [
   {
@@ -51,9 +54,20 @@ const members = [
 
 export const CafePageInfo = ({ cafe: { description, memberTotal } }) => (
   <div>
-    <h2>À propos</h2>
-    <p>{description}</p>
-    <h2>Membres ({memberTotal})</h2>
-    <CafeMembers members={members} />
+    <Section>
+      <SectionTitle>À propos</SectionTitle>
+      <p>{description}</p>
+    </Section>
+    <Section>
+      <SectionTitle>Membres ({memberTotal})</SectionTitle>
+      <CafeMembers members={members} />
+    </Section>
+    <Section>
+      <SectionTitle>Rencontres à venir</SectionTitle>
+      <CafeMeetupCard />
+    </Section>
+    <Section>
+      <SectionTitle>Rencontres passées</SectionTitle>
+    </Section>
   </div>
 );
