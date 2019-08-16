@@ -4,9 +4,10 @@ import styled from "styled-components";
 import { CafeImage } from "./CafeImage";
 import { CafeButton } from "./CafeButton";
 import { Chunk } from "../layout/Chunk";
+
 export const CafePageTop = ({
   name,
-  image,
+  pic,
   city,
   cafeType,
   postTotal,
@@ -15,7 +16,8 @@ export const CafePageTop = ({
   isMember
 }) => (
   <Container className="CafePageTop">
-    <CafeAlignImage src={image} />
+    {console.log(pic)}
+    <CafeAlignImage src={pic} />
     <div>
       <Chunk>
         <CafeName style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>

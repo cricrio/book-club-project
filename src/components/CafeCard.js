@@ -9,7 +9,15 @@ import { Chunk } from "../layout/Chunk";
 
 // TODO remove rmwc depency
 
-export const CafeCard = ({ name, description, city, pic, isMember, id }) => (
+export const CafeCard = ({
+  name,
+  description,
+  city,
+  pic,
+  isMember,
+  id,
+  cafe_members_aggregate
+}) => (
   <Container className="cafeInfo">
     <CafeImage src={pic} alt={`de ${name}`} />
     <Chunk style={{ width: "85%" }}>
@@ -29,7 +37,7 @@ export const CafeCard = ({ name, description, city, pic, isMember, id }) => (
     </Chunk>
     <CafeCardAction>
       <Chunk>
-        <b>6</b> membres
+        <b>{cafe_members_aggregate.aggregate.count}</b> membres
       </Chunk>
       <Chunk>
         <CafeButton isMember={isMember} />
