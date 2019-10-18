@@ -10,4 +10,4 @@ const formatFr = formatWithOptions({ locale: fr });
 
 export const dateToString = formatFr("d MMMM");
 
-export const fullDateToString = formatFr("PPPpp")
+export const fullDateToString = formatFr("PPPp");
