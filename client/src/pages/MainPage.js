@@ -1,20 +1,33 @@
 import React from 'react';
+import { gql } from 'apollo-boost';
+import { useQuery } from '@apollo/react-hooks';
 import styled from 'styled-components';
-
-import { MainPageQuery } from '../queries/MainPageQuery';
 
 import { CafeCard } from '../components/CafeCard';
 
-export const MainPage = () => (
-  <MainPageQuery>
-    {({ loading, error, data }) => {
-      if (loading) return <p>Loading...</p>;
-      if (error) return <p>Error :(</p>;
-      const cafes = data.cafes.map(makeCafes);
-      return <StyledDiv className="MainPage">{cafes}</StyledDiv>;
-    }}
-  </MainPageQuery>
-);
+const GET_CAFES = gql`
+  query GetCafes {
+    cafes {
+      id
+      name
+      city
+      type
+      description
+      pic
+      membersCount
+      meetupsCount
+    }
+  }
+`;
+
+export const MainPage = () => {
+  const { loading, error, data } = useQuery(GET_CAFES);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+  const cafes = data.cafes.map(makeCafes);
+  return <StyledDiv className="MainPage">{cafes}</StyledDiv>;
+};
 
 const makeCafes = cafe => <CafeCard {...cafe} key={cafe.id} />;
 

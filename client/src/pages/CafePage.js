@@ -10,7 +10,7 @@ import { CafeNav, CafeNavLink } from '../components/CafeNav';
 import { InDevelopment } from '../components/InDevelopment';
 import { CafePageInfo } from '../components/CafePageInfo';
 
-const query = gql`
+const GET_CAFE = gql`
   query Cafe($cafeId: ID!) {
     cafe(cafeId: $cafeId) {
       id
@@ -35,7 +35,9 @@ export const CafePage = ({ match }) => {
   const cafeUrl = `/cafe/${cafeId}`;
   const routes = generateRoutes(cafeUrl);
 
-  const { data, loading, error } = useQuery(query, { variables: { cafeId } });
+  const { data, loading, error } = useQuery(GET_CAFE, {
+    variables: { cafeId }
+  });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
