@@ -1,11 +1,11 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { Typography } from "@rmwc/typography";
-import { UndecoratedLink } from "./UndecoratedLink";
-import { CafeButton } from "./CafeButton";
-import { Card } from "../layout/Card";
-import { Chunk } from "../layout/Chunk";
+import { Typography } from '@rmwc/typography';
+import { UndecoratedLink } from './UndecoratedLink';
+import { CafeButton } from './CafeButton';
+import { Card } from '../layout/Card';
+import { Chunk } from '../layout/Chunk';
 
 // TODO remove rmwc depency
 
@@ -16,11 +16,12 @@ export const CafeCard = ({
   pic,
   isMember,
   id,
-  cafe_members_aggregate
+  membersCount,
+  meetupsCount
 }) => (
   <Container className="cafeInfo">
     <CafeImage src={pic} alt={`de ${name}`} />
-    <Chunk style={{ width: "85%" }}>
+    <Chunk style={{ width: '85%' }}>
       <Chunk>
         <Typography tag="h2" use="headline6">
           <UndecoratedLink to={`/cafe/${id}`}> {name}</UndecoratedLink>
@@ -37,7 +38,7 @@ export const CafeCard = ({
     </Chunk>
     <CafeCardAction>
       <Chunk>
-        <b>{cafe_members_aggregate.aggregate.count}</b> membres
+        <b>{membersCount}</b> membres
       </Chunk>
       <Chunk>
         <CafeButton isMember={isMember} />
@@ -72,7 +73,7 @@ const CafeDescription = styled(Typography)`
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 1rem;
-  max-height: ${props => props.maxline + "rem"};
+  max-height: ${props => props.maxline + 'rem'};
 `;
 
 const CafeCardAction = styled.div`

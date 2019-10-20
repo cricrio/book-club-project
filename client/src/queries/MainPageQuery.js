@@ -1,6 +1,6 @@
-import React from "react";
-import { Query } from "react-apollo";
-import { gql } from "apollo-boost";
+import React from 'react';
+import { Query } from 'react-apollo';
+import { gql } from 'apollo-boost';
 
 export const MainPageQuery = ({ children }) => (
   <Query query={query}>{children}</Query>
@@ -8,16 +8,15 @@ export const MainPageQuery = ({ children }) => (
 
 const query = gql`
   query GetCafes {
-    cafe {
+    cafes {
       id
       name
+      city
+      type
       description
       pic
-      cafe_members_aggregate {
-        aggregate {
-          count
-        }
-      }
+      membersCount
+      meetupsCount
     }
   }
 `;

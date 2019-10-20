@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { MemberCard } from "./MemberCard";
+import { MemberCard } from './MemberCard';
 
 export const CafeMembers = ({ members }) => (
   <Container>
-    {members.map(member => (
-      <MemberCard member={member} />
+    {members.map(({ name, pic }) => (
+      <MemberCard name={name} pic={pic} />
     ))}
   </Container>
 );

@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { Avatar } from "./Avatar";
+import { Avatar } from './Avatar';
 
-export const MemberCard = ({ member: { pic } }) => (
+export const MemberCard = ({ pic }) => (
   <Card>
     <Avatar src={pic} />
   </Card>

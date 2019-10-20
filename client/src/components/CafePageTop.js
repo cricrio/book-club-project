@@ -1,36 +1,18 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { CafeImage } from "./CafeImage";
-import { CafeButton } from "./CafeButton";
-import { Chunk } from "../layout/Chunk";
+import { CafeImage } from './CafeImage';
+import { CafeButton } from './CafeButton';
+import { Chunk } from '../layout/Chunk';
 
-export const CafePageTop = ({
-  name,
-  pic,
-  city,
-  cafeType,
-  postTotal,
-  meetupTotal,
-  memberTotal,
-  isMember
-}) => (
+export const CafePageTop = ({ name, pic, city, type, isMember }) => (
   <Container className="CafePageTop">
-    {console.log(pic)}
     <CafeAlignImage src={pic} />
     <div>
       <Chunk>
-        <CafeName style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>
-          {name}
-        </CafeName>
-        <div>{city}</div>
-      </Chunk>
-      <Chunk>
+        <CafeName>{name}</CafeName>
         <div>
-          <b>{memberTotal} </b> membres - groupe <b>{cafeType}</b>
-        </div>
-        <div>
-          <b>{meetupTotal} </b> rencontres - <b> {postTotal || 5} </b> posts
+          {city} - groupe <b>{type}</b>
         </div>
       </Chunk>
       <Chunk>

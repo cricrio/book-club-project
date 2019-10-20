@@ -1,16 +1,16 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import { MainPageQuery } from "../queries/MainPageQuery";
+import { MainPageQuery } from '../queries/MainPageQuery';
 
-import { CafeCard } from "../components/CafeCard";
+import { CafeCard } from '../components/CafeCard';
 
 export const MainPage = () => (
   <MainPageQuery>
     {({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error :(</p>;
-      const cafes = data.cafe.map(makeCafes);
+      const cafes = data.cafes.map(makeCafes);
       return <StyledDiv className="MainPage">{cafes}</StyledDiv>;
     }}
   </MainPageQuery>
