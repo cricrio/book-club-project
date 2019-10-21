@@ -1,6 +1,8 @@
 const { gql } = require('apollo-server');
 
 const typeDefs = gql`
+  scalar DateTime
+
   type Query {
     cafes: [Cafe]
     cafe(cafeId: ID!): Cafe
@@ -18,9 +20,19 @@ const typeDefs = gql`
     pic: String
     description: String
     city: String
-    members: [User]
     membersCount: Int
     meetupsCount: Int
+    members: [User]
+    meetups: [Meetup]
+  }
+
+  type Meetup {
+    id: ID!
+    name: String
+    localisation: String
+    date: DateTime
+    participants: [User]
+    participantsCount: Int
   }
 
   type User {

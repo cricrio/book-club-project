@@ -5,9 +5,11 @@ const resolvers = require('./resolvers');
 
 const UserModel = require('./models/user');
 const CafeModel = require('./models/cafe');
+const MeetupModel = require('./models/meetup');
 
 const Cafes = require('./datasources/Cafes');
 const Users = require('./datasources/Users');
+const Meetups = require('./datasources/Meetups');
 
 mongoose.connect('mongodb://localhost:27017/bookclub', {
   useNewUrlParser: true,
@@ -19,7 +21,8 @@ const server = new ApolloServer({
   resolvers,
   dataSources: () => ({
     cafes: new Cafes(CafeModel),
-    users: new Users(UserModel)
+    users: new Users(UserModel),
+    meetups: new Meetups(MeetupModel)
   })
 });
 

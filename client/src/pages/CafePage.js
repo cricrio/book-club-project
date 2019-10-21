@@ -26,6 +26,12 @@ const GET_CAFE = gql`
         name
         pic
       }
+      meetups {
+        name
+        date
+        localisation
+        participantsCount
+      }
     }
   }
 `;

@@ -5,7 +5,7 @@ import { Section } from '../layout/Section';
 import { SectionTitle } from '../layout/SectionTitle';
 
 export const CafePageInfo = ({
-  cafe: { description, membersCount, members }
+  cafe: { description, membersCount, members, meetups }
 }) => (
   <div>
     <Section>
@@ -18,7 +18,7 @@ export const CafePageInfo = ({
     </Section>
     <Section>
       <SectionTitle>Rencontres à venir</SectionTitle>
-      <CafeMeetupCard />
+      <CafeMeetupCard meetup={meetups[0]} />
     </Section>
     <Section>
       <SectionTitle>Rencontres passées</SectionTitle>

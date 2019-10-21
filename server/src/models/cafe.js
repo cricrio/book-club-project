@@ -9,8 +9,8 @@ const Schema = new mongoose.Schema({
   city: { type: String },
   description: String,
   pic: String,
-  membersCount: { type: Number },
-  meetupCount: { type: Number }
+  membersCount: { type: Number, default: 0 },
+  meetupCount: { type: Number, default: 0 }
 });
 
 module.exports = mongoose.model('Cafe', Schema);

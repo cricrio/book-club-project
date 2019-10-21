@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 
 const UserModel = require('./models/user');
 const CafeModel = require('./models/cafe');
+const MeetupModel = require('./models/meetup');
+
+const _id = x => x._id;
 
 (async function() {
   mongoose.connect('mongodb://localhost:27017/bookclub', {
@@ -14,6 +17,19 @@ const CafeModel = require('./models/cafe');
       name: 'Mario',
       pic: 'https://rmwc.io/images/avatars/ironman.png',
       cafesIds: []
+    }
+  ];
+
+  const meetups = [
+    {
+      name: 'Rencontre de Noel',
+      date: new Date(2025, 12, 25),
+      localisation: 'Cafe Mario'
+    },
+    {
+      name: 'Premiére rencontre 🚀 🚀 🚀 🚀 🚀',
+      date: new Date(2018, 5, 8),
+      localisation: 'Cafe Mario'
     }
   ];
 
@@ -32,10 +48,18 @@ const CafeModel = require('./models/cafe');
 
   await CafeModel.deleteMany({});
   await UserModel.deleteMany({});
+  await MeetupModel.deleteMany({});
 
   const savedCafes = await CafeModel.insertMany(cafes);
-  const cafeIds = savedCafes.map(c => c._id);
+  const cafeIds = savedCafes.map(_id);
+
   const usersWithCafe = users.map(u => Object.assign({}, u, { cafeIds }));
-  await UserModel.insertMany(usersWithCafe);
+  const savedUsers = await UserModel.insertMany(usersWithCafe);
+  const userIds = savedUsers.map(_id);
+
+  const meetupsWithCafe = meetups.map(m =>
+    Object.assign({}, m, { cafeId: cafeIds[0] }, { participantIds: userIds })
+  );
+  await MeetupModel.insertMany(meetupsWithCafe);
   mongoose.disconnect();
 })();
