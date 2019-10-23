@@ -1,5 +1,6 @@
-import styled from "styled-components";
+import React from 'react';
+import { Typography } from '@rmwc/typography';
 
-export const SectionTitle = styled.h3`
-  margin-bottom: 1rem;
-`;
+export function SectionTitle({ children }) {
+  return <Typography use="headline6">{children}</Typography>;
+}

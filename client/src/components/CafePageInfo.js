@@ -3,6 +3,7 @@ import { CafeMembers } from './CafeMembers';
 import { CafeMeetupCard } from './CafeMeetupCard';
 import { Section } from '../layout/Section';
 import { SectionTitle } from '../layout/SectionTitle';
+import { Typography } from '@rmwc/typography';
 
 export const CafePageInfo = ({
   cafe: { description, membersCount, members, meetups }
@@ -10,7 +11,9 @@ export const CafePageInfo = ({
   <div>
     <Section>
       <SectionTitle>À propos</SectionTitle>
-      <p>{description}</p>
+      <Typography use="body1" tag="div">
+        {description}
+      </Typography>
     </Section>
     <Section>
       <SectionTitle>Membres ({membersCount})</SectionTitle>

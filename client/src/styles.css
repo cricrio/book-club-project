@@ -8,7 +8,7 @@ body {
   --mdc-theme-on-secondary: rgba(0, 0, 0, 0.87);
   --mdc-theme-on-surface: rgba(0, 0, 0, 0.87);
   --mdc-theme-on-error: #fff;
-  --mdc-theme-text-primary-on-background: rgba(0, 0, 0, 0.87);
+  --mdc-theme-text-primary-on-background: #445963;
   --mdc-theme-text-secondary-on-background: rgba(0, 0, 0, 0.54);
   --mdc-theme-text-hint-on-background: rgba(0, 0, 0, 0.38);
   --mdc-theme-text-disabled-on-background: rgba(0, 0, 0, 0.38);
@@ -28,6 +28,7 @@ body {
   height: 100vh;
   font-family: sans-serif;
   background-color: var(--mdc-theme-background);
+  color: rgba(0, 0, 0, 0.87);
 }
 
 html {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Typography } from '@rmwc/typography';
 import styled from 'styled-components';
 
 import { fullDateToString } from '../lib/dateUtils';
@@ -15,20 +16,25 @@ export const CafeMeetupCard = ({
     <Container>
       <div>
         <Chunk>
-          <time dateTime={date}>{fullDateToString(date)}</time>
+          <Typography use="body1">
+            <time dateTime={date}>{fullDateToString(date)}</time>
+          </Typography>
         </Chunk>
         <Chunk>
           <Chunk>
             <UndecoratedLink style={{ fontWeight: 'bold' }}>
-              {name}
+              <Typography use="headline6">{name}</Typography>
             </UndecoratedLink>
           </Chunk>
-          <Chunk>{localisation}</Chunk>
+          <Chunk>
+            <Typography use="body1">{localisation}</Typography>
+          </Chunk>
         </Chunk>
       </div>
       <div style={{ alignSelf: 'center', textAlign: 'center' }}>
-        <Chunk>{participantsCount} participants</Chunk>
-        <CafeButton />
+        <Chunk>
+          <Typography use="body1">{participantsCount} participants</Typography>
+        </Chunk>
       </div>
     </Container>
   );

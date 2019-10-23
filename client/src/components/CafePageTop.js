@@ -1,24 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Typography } from '@rmwc/typography';
 
 import { CafeImage } from './CafeImage';
-import { CafeButton } from './CafeButton';
 import { Chunk } from '../layout/Chunk';
 
-export const CafePageTop = ({ name, pic, city, type, isMember }) => (
+export const CafePageTop = ({ name, pic, city, type }) => (
   <Container className="CafePageTop">
     <CafeAlignImage src={pic} />
     <div>
       <Chunk>
-        <CafeName>{name}</CafeName>
-        <div>
-          {city} - groupe <b>{type}</b>
-        </div>
+        <Typography use="headline5" tag="div">
+          {name}
+        </Typography>
+        <Typography use="subtitle1">
+          {city} - groupe {type}
+        </Typography>
       </Chunk>
       <Chunk>
-        Prochaine rencontre le <b>lun. 22 juil., 9h00</b>
+        <Typography use="subtitle1">
+          Prochaine rencontre le lun. 22 juil., 9h00
+        </Typography>
       </Chunk>
-      <CafeButton isMember={isMember} />
     </div>
   </Container>
 );
