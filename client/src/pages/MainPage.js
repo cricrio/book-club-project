@@ -33,8 +33,7 @@ const makeCafes = cafe => <CafeCard {...cafe} key={cafe.id} />;
 
 const StyledDiv = styled.div`
   display: flex;
-  flex-direction: column;
-  margin-top: 2rem;
-
-  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2rem 5rem;
 `;
