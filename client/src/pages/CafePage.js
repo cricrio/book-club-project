@@ -27,10 +27,18 @@ const GET_CAFE = gql`
         pic
       }
       meetups {
-        name
-        date
-        localisation
-        participantsCount
+        next {
+          name
+          date
+          localisation
+          participantsCount
+        }
+        past {
+          name
+          date
+          localisation
+          participantsCount
+        }
       }
     }
   }
@@ -53,6 +61,7 @@ export const CafePage = ({ match }) => {
   if (!cafe) {
     return '404 Cafe not found';
   }
+
   return (
     <Container>
       <CafePageTop {...cafe} />

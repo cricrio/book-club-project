@@ -5,8 +5,6 @@ import { Typography } from '@rmwc/typography';
 import { UndecoratedLink } from './UndecoratedLink';
 import { Card, CardMedia } from '@rmwc/card';
 
-// TODO remove rmwc depency
-
 export const CafeCard = ({ name, description, city, pic, id }) => (
   <Container className="cafeInfo">
     <CardMedia

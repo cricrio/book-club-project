@@ -27,6 +27,11 @@ const _id = x => x._id;
       localisation: 'Cafe Mario'
     },
     {
+      name: 'Deuxième',
+      date: new Date(2019, 8, 8),
+      localisation: 'Cafe Mario'
+    },
+    {
       name: 'Premiére rencontre 🚀 🚀 🚀 🚀 🚀',
       date: new Date(2018, 5, 8),
       localisation: 'Cafe Mario'

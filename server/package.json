@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "nodemon src/index.js",
     "seed": "node src/seed.js"
   },
@@ -14,7 +14,12 @@
   "dependencies": {
     "apollo-datasource-mongodb": "^0.2.0",
     "apollo-server": "^2.9.6",
+    "date-fns": "^2.6.0",
     "graphql": "^14.5.8",
-    "mongoose": "^5.7.5"
+    "mongoose": "^5.7.5",
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
   }
 }

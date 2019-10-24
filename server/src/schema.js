@@ -23,7 +23,7 @@ const typeDefs = gql`
     membersCount: Int
     meetupsCount: Int
     members: [User]
-    meetups: [Meetup]
+    meetups: MeetupQueryResponse
   }
 
   type Meetup {
@@ -33,6 +33,12 @@ const typeDefs = gql`
     date: DateTime
     participants: [User]
     participantsCount: Int
+  }
+
+  type MeetupQueryResponse {
+    next: Meetup
+    past: [Meetup]
+    future: [Meetup]
   }
 
   type User {
