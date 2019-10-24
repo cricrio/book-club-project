@@ -2,9 +2,8 @@ import React from 'react';
 import { Typography } from '@rmwc/typography';
 import styled from 'styled-components';
 
-import { fullDateToString } from '../lib/dateUtils';
 import { UndecoratedLink } from './UndecoratedLink';
-import { CafeButton } from './CafeButton';
+import { FullTime } from './FullTime';
 import { Card } from '../layout/Card';
 import { Chunk } from '../layout/Chunk';
 
@@ -17,7 +16,7 @@ export const CafeMeetupCard = ({
       <div>
         <Chunk>
           <Typography use="body1">
-            <time dateTime={date}>{fullDateToString(date)}</time>
+            <FullTime date={date} />
           </Typography>
         </Chunk>
         <Chunk>

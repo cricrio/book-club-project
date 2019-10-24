@@ -4,8 +4,17 @@ import { Typography } from '@rmwc/typography';
 
 import { CafeImage } from './CafeImage';
 import { Chunk } from '../layout/Chunk';
+import { FullTime } from './FullTime';
 
-export const CafePageTop = ({ name, pic, city, type }) => (
+export const CafePageTop = ({
+  cafe: {
+    name,
+    pic,
+    city,
+    type,
+    meetups: { next }
+  }
+}) => (
   <Container className="CafePageTop">
     <CafeAlignImage src={pic} />
     <div>
@@ -14,13 +23,15 @@ export const CafePageTop = ({ name, pic, city, type }) => (
           {name}
         </Typography>
         <Typography use="subtitle1">
-          {city} - groupe {type}
+          {type === 'LOCAL' ? `${city} - groupe ${type}` : `groupe ${type}`}
         </Typography>
       </Chunk>
       <Chunk>
-        <Typography use="subtitle1">
-          Prochaine rencontre le lun. 22 juil., 9h00
-        </Typography>
+        {next && (
+          <Typography use="subtitle1">
+            Prochaine rencontre le <FullTime date={next.date} />
+          </Typography>
+        )}
       </Chunk>
     </div>
   </Container>
@@ -37,11 +48,6 @@ const Container = styled.div`
     flex-direction: row;
     justify-content: space-between;
   }
-`;
-
-const CafeName = styled.h2`
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
 `;
 
 const CafeAlignImage = styled(CafeImage)`

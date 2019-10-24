@@ -1,57 +1,44 @@
 import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
 
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { CafePageTop } from '../components/CafePageTop';
 import { CafeNav, CafeNavLink } from '../components/CafeNav';
 import { InDevelopment } from '../components/InDevelopment';
 import { CafePageInfo } from '../components/CafePageInfo';
+import { useCafe } from '../hooks/useCafe';
 
-const GET_CAFE = gql`
-  query Cafe($cafeId: ID!) {
-    cafe(cafeId: $cafeId) {
-      id
-      name
-      city
-      type
-      description
-      pic
-      membersCount
-      meetupsCount
-      members {
-        id
-        name
-        pic
-      }
-      meetups {
-        next {
-          name
-          date
-          localisation
-          participantsCount
-        }
-        past {
-          name
-          date
-          localisation
-          participantsCount
-        }
-      }
-    }
+const routes = [
+  {
+    exact: true,
+    path: 'members',
+    name: 'Members',
+    Component: InDevelopment
+  },
+  {
+    exact: true,
+    path: 'discution',
+    name: 'Discution',
+    Component: InDevelopment
+  },
+  {
+    exact: true,
+    path: 'rencontres',
+    name: 'Rencontres',
+    Component: InDevelopment
+  },
+  {
+    exact: true,
+    path: 'livres',
+    name: 'Livres',
+    Component: InDevelopment
   }
-`;
+];
 
-export const CafePage = ({ match }) => {
-  const cafeId = match.params.id;
-  const cafeUrl = `/cafe/${cafeId}`;
-  const routes = generateRoutes(cafeUrl);
-
-  const { data, loading, error } = useQuery(GET_CAFE, {
-    variables: { cafeId }
-  });
+export const CafePage = () => {
+  const { data, loading, error } = useCafe();
+  const { id } = useParams();
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
@@ -64,33 +51,27 @@ export const CafePage = ({ match }) => {
 
   return (
     <Container>
-      <CafePageTop {...cafe} />
+      <CafePageTop cafe={cafe} />
       <CafeNav>
-        <CafeNavLink to={routes.about}>À propos</CafeNavLink>
-        <CafeNavLink to={routes.members}>Members</CafeNavLink>
-        <CafeNavLink to={routes.discution}>Discution</CafeNavLink>
-        <CafeNavLink to={routes.rencontres}>Rencontres</CafeNavLink>
-        <CafeNavLink to={routes.livres}>Livres</CafeNavLink>
+        <CafeNavLink to={`/cafe/${id}/`}>À propos</CafeNavLink>
+        {routes.map(({ name, path }) => (
+          <CafeNavLink to={`/cafe/${id}/${path}`}>{name}</CafeNavLink>
+        ))}
       </CafeNav>
 
       <Switch>
-        <Route exact path={routes.members} component={InDevelopment} />
-        <Route exact path={routes.discution} component={InDevelopment} />
-        <Route exact path={routes.rencontres} component={InDevelopment} />
-        <Route exact path={routes.livres} component={InDevelopment} />
-        <Route>
+        {routes.map(({ Component, path, exact }) => (
+          <Route exact={exact} path={`/cafe/${id}/${path}`}>
+            <Component cafe={cafe} />
+          </Route>
+        ))}
+        <Route path={`/cafe/${id}/`}>
           <CafePageInfo cafe={cafe} />
         </Route>
       </Switch>
     </Container>
   );
 };
-
-const generateRoutes = cafeUrl =>
-  ['about', 'members', 'discution', 'rencontres', 'livres', 'membres'].reduce(
-    (routes, r) => ({ [r]: `${cafeUrl}/${r}`, ...routes }),
-    {}
-  );
 
 const Container = styled.div`
   background-color: white;
