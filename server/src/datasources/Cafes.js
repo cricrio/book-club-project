@@ -7,6 +7,10 @@ class Cafes extends MongoDataSource {
   getAllCafes() {
     return this.model.find({});
   }
+  createCafe(cafe) {
+    console.log(cafe)
+    return this.model.create(cafe);
+  }
   //TODO Add tests
   /**
    * @description if asc is true increment membersCount of 1 if not decrement of 1

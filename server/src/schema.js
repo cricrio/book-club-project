@@ -8,7 +8,18 @@ const typeDefs = gql`
     cafe(cafeId: ID!): Cafe
   }
 
-  enum CafeType {
+  input CafeInput {
+    name: String
+    type: CafeTypeEnum
+    description: String
+    pic: String
+  }
+
+  type Mutation {
+    createCafe(cafe: CafeInput): Cafe
+  }
+  
+  enum CafeTypeEnum {
     LOCAL
     ONLINE
   }
@@ -16,7 +27,7 @@ const typeDefs = gql`
   type Cafe {
     id: ID!
     name: String
-    type: CafeType
+    type: CafeTypeEnum
     pic: String
     description: String
     city: String
