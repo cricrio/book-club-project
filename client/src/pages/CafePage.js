@@ -1,11 +1,10 @@
 import React from 'react';
 
 import { Switch, Route } from 'react-router-dom';
-import styled from 'styled-components';
 
 import { CafePageTop } from '../components/CafePageTop';
 import { CafeNav, CafeNavLink } from '../components/CafeNav';
-
+import { PageContainer } from '../layout/PageContainer';
 import { useCafe } from '../hooks/useCafe';
 import { useCafeRoutes } from '../hooks/useCafeRoutes';
 
@@ -20,7 +19,7 @@ export const CafePage = () => {
   }
 
   return (
-    <Container>
+    <PageContainer>
       <CafePageTop cafe={cafe} />
       <CafeNav>
         {routes.map(({ name, path }) => (
@@ -35,14 +34,6 @@ export const CafePage = () => {
           </Route>
         ))}
       </Switch>
-    </Container>
+    </PageContainer>
   );
 };
-
-const Container = styled.div`
-  background-color: white;
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  min-height: 100vh;
-`;
