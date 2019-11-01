@@ -15,7 +15,9 @@ const GET_CAFE = gql`
       meetupsCount
       members {
         id
-        name
+        identity {
+          mini
+        }
         pic
       }
       meetups {
@@ -37,7 +39,8 @@ const GET_CAFE = gql`
 `;
 
 export function useCafe() {
-  return useQuery(GET_CAFE, {
+  const { data, loading, error } = useQuery(GET_CAFE, {
     variables: useParams()
   });
+  return { cafe: data && data.cafe, error, loading };
 }

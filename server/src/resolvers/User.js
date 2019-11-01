@@ -1,3 +1,4 @@
 module.exports = {
-  id: user => user._id
+  id: user => user._id,
+  identity: user => user
 };

@@ -5,8 +5,8 @@ import { MemberCard } from './MemberCard';
 
 export const CafeMembers = ({ members }) => (
   <Container>
-    {members.map(({ name, pic }) => (
-      <MemberCard name={name} pic={pic} />
+    {members.map(({ identity, pic }) => (
+      <MemberCard name={identity.mini} pic={pic} />
     ))}
   </Container>
 );

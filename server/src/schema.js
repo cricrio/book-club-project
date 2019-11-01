@@ -41,11 +41,18 @@ const typeDefs = gql`
     future: [Meetup]
   }
 
+  type UserIdentity {
+    mini: String
+    full: String
+    surname: String
+    firstname: String
+  }
+
   type User {
     id: ID!
     email: String
-    name: String
     pic: String
+    identity: UserIdentity
   }
 `;
 

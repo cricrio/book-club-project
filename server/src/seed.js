@@ -14,7 +14,8 @@ const _id = x => x._id;
 
   const users = [
     {
-      name: 'Mario',
+      firstname: 'Mario',
+      surname: 'Matir',
       pic: 'https://rmwc.io/images/avatars/ironman.png',
       cafesIds: []
     }

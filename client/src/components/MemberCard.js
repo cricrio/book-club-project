@@ -1,14 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Avatar } from './Avatar';
-
-export const MemberCard = ({ pic }) => (
+export const MemberCard = ({ pic, name }) => (
   <Card>
-    <Avatar src={pic} />
+    <Avatar src={pic} alt={name} />
   </Card>
 );
 
 const Card = styled.div`
-  padding: 1rem;
+  text-align: center;
+  margin: 1rem;
+`;
+
+const Avatar = styled.img`
+  display: inline-block;
+  border-radius: 50px;
+  width: 4rem;
+  height: 4rem;
 `;

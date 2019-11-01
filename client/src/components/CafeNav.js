@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { UndecoratedLink } from "./UndecoratedLink";
+import { NavLink } from 'react-router-dom';
 
-//Ca be improve for mobile use
+//To be improved for mobile use
 //TODO hide scrollbar
 export const CafeNav = styled.ul`
   display: flex;
@@ -16,18 +16,22 @@ export const CafeNav = styled.ul`
   overflow-x: auto;
 `;
 
-export const CafeNavItem = styled.li`
-  cursor: pointer;
-  list-style-type: none;
+export const CafeNavItem = styled(NavLink)`
+  color: inherit;
+  text-decoration: none;
   padding: 1rem;
 
   :hover {
-    color: green;
+    font-weight: bold;
+    color: var(--mdc-theme-text-secondary-on-background);
   }
 `;
 
 export const CafeNavLink = ({ children, ...props }) => (
-  <CafeNavItem>
-    <UndecoratedLink {...props}>{children}</UndecoratedLink>
+  <CafeNavItem
+    {...props}
+    activeClassName="mdc-theme--text-secondary-on-background"
+  >
+    {children}
   </CafeNavItem>
 );

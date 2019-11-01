@@ -3,6 +3,7 @@ const Cafe = require('./Cafe');
 const User = require('./User');
 const DateTime = require('./DateTime');
 const Meetup = require('./Meetup');
+const UserIdentity = require('./UserIdentity');
 
 module.exports = Object.assign(
   {},
@@ -10,5 +11,6 @@ module.exports = Object.assign(
   { Cafe },
   { User },
   { DateTime },
-  { Meetup }
+  { Meetup },
+  { UserIdentity }
 );

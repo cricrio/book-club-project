@@ -14,7 +14,7 @@ export const CafeCard = ({ name, description, city, pic, id }) => (
       }}
     />
     <div style={{ padding: '1rem' }}>
-      <HeadLine to={`/cafe/${id}`}>
+      <HeadLine to={`/cafe/${id}/`}>
         <Typography tag="h2" use="headline6">
           {name}
         </Typography>
