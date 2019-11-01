@@ -8,6 +8,7 @@ import { ApolloProvider } from 'react-apollo';
 import { TopBar } from './components/TopBar';
 import { MainPage } from './pages/MainPage';
 import { CafePage } from './pages/CafePage';
+import { AdminPage } from './pages/AdminPage';
 
 import 'normalize.css/normalize.css';
 import './styles.css';
@@ -23,8 +24,15 @@ const App = () => (
     <Router>
       <TopBar title="BookBlogs" />
       <main>
-        <Route path="/" exact component={MainPage} />
-        <Route path="/cafe/:id" component={CafePage} />
+        <Route path="/" exact>
+          <MainPage />
+        </Route>
+        <Route path="/cafe/:id" component={CafePage}>
+          <CafePage />
+        </Route>
+        <Route path="/admin">
+          <AdminPage />
+        </Route>
       </main>
     </Router>
   </ApolloProvider>
