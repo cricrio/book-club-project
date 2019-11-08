@@ -4,23 +4,29 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "dev": "nodemon src/index.js",
-    "seed": "node src/seed.js"
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+    "build": "tsc",
+    "prestart": "npm run build",
+    "seed": "ts-node-dev src/seed.ts",
+    "start": "node .",
+    "dev": "ts-node-dev src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apollo-datasource-mongodb": "^0.2.0",
     "apollo-server": "^2.9.6",
-    "date-fns": "^2.6.0",
-    "graphql": "^14.5.8",
-    "mongoose": "^5.7.5",
-    "ramda": "^0.26.1"
+    "graphql-request": "^1.8.2",
+    "neo4j-driver": "^1.7.6",
+    "neo4j-graphql-js": "^2.8.0",
+    "rambda": "^4.0.2"
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.4"
   }
 }

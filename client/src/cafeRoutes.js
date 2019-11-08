@@ -1,4 +1,4 @@
-import * as R from 'ramda';
+import {}from 'ramda';
 import { InDevelopment } from './components/InDevelopment';
 import { CafePageInfo } from './components/CafePageInfo';
 

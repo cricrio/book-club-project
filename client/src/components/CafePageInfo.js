@@ -31,7 +31,7 @@ export const CafePageInfo = ({
       </Section>
       <Section>
         <SectionTitle>Rencontres à venir</SectionTitle>
-        <CafeMeetupCard meetup={meetups.next} />
+        {meetups && meetups.next && <CafeMeetupCard meetup={meetups.next} />}
       </Section>
       {pastMeetups && (
         <Section>
