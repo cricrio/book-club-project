@@ -7,7 +7,7 @@
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
     "prestart": "npm run build",
-    "seed": "ts-node-dev src/seed.ts",
+    "seed": "ts-node-dev scripts/seed/index.ts",
     "start": "node .",
     "dev": "ts-node-dev src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
