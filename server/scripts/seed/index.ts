@@ -1,6 +1,12 @@
-import { request } from 'graphql-request';
-import { prop } from 'rambda';
 import { v1 as neo4j } from 'neo4j-driver';
+import {
+  sendRequest,
+  createCafeRequest,
+  createMeetupRequest,
+  createUserRequest,
+  linkCafeToUserRequest,
+  linkCafeToMeetupRequest
+} from './request';
 
 class DateTime {
   year: number;
@@ -39,76 +45,9 @@ const clearData = async () => {
   driver.close();
 };
 
-const sendRequest = (url: string) => ({ query, parser = _ => _ }) => (
-  variables: any
-) => request(url, query, variables).then(parser);
-
-const createUserRequest = (sendFunction: Function) =>
-  sendFunction({
-    query: `mutation CreateUser($name: String){
-  CreateUser(name: $name ){
-    name
-    id
-  }
-}`,
-    parser: prop('CreateUser')
-  });
-
-const createCafeRequest = (sendFunction: Function) =>
-  sendFunction({
-    query: `mutation CreateCafe($name: String, $description: String, $city: String){
-  CreateCafe(name: $name, description: $description, city: $city){
-    name
-    id
-  }
-}`,
-    parser: prop('CreateCafe')
-  });
-
-const createMeetupRequest = (sendFunction: Function) =>
-  sendFunction({
-    query: `mutation CreateMeetup($name: String, $date: _Neo4jDateTimeInput, $localisation: String){
-      CreateMeetup(name: $name, date: $date, localisation: $localisation){
-        name
-        id
-        date{
-          day
-          year
-          month
-        }
-      }
-    }
-`,
-    parser: prop('CreateMeetup')
-  });
-
-const linkCafeToUserRequest = (sendFunction: Function) =>
-  sendFunction({
-    query: `mutation LinkCafeToUser($cafeId: ID!, $userId: ID!) {
-      AddCafeMembers(from: { id: $cafeId }, to: { id: $userId }) {
-        from {
-          id
-        }
-      }
-    }
-    `
-  });
-
 const linkCafesToUsers = (linkFunction: Function) => (users, cafes) =>
   users.forEach(({ id: userId }) => {
     cafes.forEach(({ id: cafeId }) => linkFunction({ userId, cafeId }));
-  });
-
-const linkCafeToMeetupRequest = (sendFunction: Function) =>
-  sendFunction({
-    query: `mutation LinkCafeToMeetup($cafeId: ID!, $meetupId: ID!) {
-      AddCafeMeetups(from: { id: $cafeId }, to: { id: $meetupId }) {
-        from {
-          id
-        }
-      }
-    }
-    `
   });
 
 const linkCafeToMeetups = (linkFunction: Function) => (
