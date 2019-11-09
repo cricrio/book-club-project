@@ -28,8 +28,9 @@ type User {
 
 type Meetup {
   id: ID!
+  localisation: String
   name: String
-  date: Date
+  date: DateTime
   cafe: Cafe @relation(name: "CAFE_MEETUP",direction: "IN")
 }
 `;

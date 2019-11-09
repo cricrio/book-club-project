@@ -2,6 +2,23 @@ import { request } from 'graphql-request';
 import { prop } from 'rambda';
 import { v1 as neo4j } from 'neo4j-driver';
 
+class DateTime {
+  year: number;
+  month: number;
+  day: number;
+  hour: number;
+  minute: number;
+
+  constructor(dateTimestamp?: string) {
+    const date = dateTimestamp ? new Date(dateTimestamp) : new Date();
+    this.year = date.getFullYear();
+    this.month = date.getMonth() + 1;
+    this.day = date.getDate();
+    this.hour = date.getHours();
+    this.minute = date.getMinutes();
+  }
+}
+
 const clearData = async () => {
   const auth = {
     username: 'neo4j',
@@ -48,6 +65,23 @@ const createCafeRequest = (sendFunction: Function) =>
     parser: prop('CreateCafe')
   });
 
+const createMeetupRequest = (sendFunction: Function) =>
+  sendFunction({
+    query: `mutation CreateMeetup($name: String, $date: _Neo4jDateTimeInput, $localisation: String){
+      CreateMeetup(name: $name, date: $date, localisation: $localisation){
+        name
+        id
+        date{
+          day
+          year
+          month
+        }
+      }
+    }
+`,
+    parser: prop('CreateMeetup')
+  });
+
 const linkCafeToUserRequest = (sendFunction: Function) =>
   sendFunction({
     query: `mutation LinkCafeToUser($cafeId: ID!, $userId: ID!) {
@@ -65,13 +99,50 @@ const linkCafesToUsers = (linkFunction: Function) => (users, cafes) =>
     cafes.forEach(({ id: cafeId }) => linkFunction({ userId, cafeId }));
   });
 
+const linkCafeToMeetupRequest = (sendFunction: Function) =>
+  sendFunction({
+    query: `mutation LinkCafeToMeetup($cafeId: ID!, $meetupId: ID!) {
+      AddCafeMeetups(from: { id: $cafeId }, to: { id: $meetupId }) {
+        from {
+          id
+        }
+      }
+    }
+    `
+  });
+
+const linkCafeToMeetups = (linkFunction: Function) => (
+  { id: cafeId },
+  meetups = []
+) => meetups.forEach(({ id: meetupId }) => linkFunction({ meetupId, cafeId }));
+
 async function main() {
   const execRequest = sendRequest('http://localhost:3003/graphql');
   const createUser = createUserRequest(execRequest);
   const createCafe = createCafeRequest(execRequest);
+  const createMeetup = createMeetupRequest(execRequest);
   const linkCafeToUser = linkCafeToUserRequest(execRequest);
+  const linkCafeToMeetup = linkCafeToMeetupRequest(execRequest);
 
   await clearData();
+
+  const meetupFantasyOne = await createMeetup({
+    name: 'Meetup #1',
+    date: new DateTime('2019-12-01'),
+    localisation: 'Café Mario'
+  });
+
+  const meetupFantasyTwo = await createMeetup({
+    name: 'Meetup #1',
+    date: new DateTime('2021-01-01'),
+    localisation: 'Café Mario'
+  });
+
+  const meetupFantasyThree = await createMeetup({
+    name: 'Meetup #1',
+    date: new DateTime('2021-02-01'),
+    localisation: 'Café Mario'
+  });
 
   const martin = await createUser({ name: 'Martin' });
 
@@ -113,6 +184,12 @@ async function main() {
 
   const users = [martin, fiona, lisa, lucy];
   const cafes = [fantasyCafe, leMansCafe, nantesCafe];
+
+  await linkCafeToMeetups(linkCafeToMeetup)(fantasyCafe, [
+    meetupFantasyOne,
+    meetupFantasyTwo,
+    meetupFantasyThree
+  ]);
 
   linkCafesToUsers(linkCafeToUser)(users, cafes);
 }
