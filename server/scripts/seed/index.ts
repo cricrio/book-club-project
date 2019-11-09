@@ -111,7 +111,7 @@ async function main() {
     meetupFantasyThree
   ]);
 
-  linkCafesToUsers(linkCafeToUser)(users, cafes);
+  await linkCafesToUsers(linkCafeToUser)(users, cafes);
 }
 
 main();
