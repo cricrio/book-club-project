@@ -11,7 +11,7 @@ const Cafes = require('./datasources/Cafes');
 const Users = require('./datasources/Users');
 const Meetups = require('./datasources/Meetups');
 
-mongoose.connect('mongodb://localhost:27017/bookclub', {
+mongoose.connect('mongodb://mongo/bookclub', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });

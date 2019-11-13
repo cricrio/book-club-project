@@ -7,7 +7,7 @@ const MeetupModel = require('./models/meetup');
 const _id = x => x._id;
 
 (async function() {
-  mongoose.connect('mongodb://localhost:27017/bookclub', {
+  mongoose.connect('mongodb://mongo:27017/bookclub', {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });
