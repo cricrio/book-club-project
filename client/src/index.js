@@ -16,7 +16,7 @@ import './styles.css';
 import './materialImports';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000'
+  uri: 'http://localhost:3003'
 });
 
 const App = () => (

@@ -7,15 +7,12 @@ import { CafeCard } from '../components/CafeCard';
 
 const GET_CAFES = gql`
   query GetCafes {
-    cafes {
+    Cafe {
       id
       name
       city
-      type
       description
       pic
-      membersCount
-      meetupsCount
     }
   }
 `;
@@ -25,7 +22,7 @@ export const MainPage = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
-  const cafes = data.cafes.map(makeCafes);
+  const cafes = data.Cafe.map(makeCafes);
   return <StyledDiv className="MainPage">{cafes}</StyledDiv>;
 };
 

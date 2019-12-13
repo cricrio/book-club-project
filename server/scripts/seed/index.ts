@@ -78,40 +78,51 @@ async function main() {
     name: 'Lisa'
   });
 
-  const fantasyCafe = await createCafe({
-    city: 'Pornic',
-    name: 'Le petit fantaisiste',
-    type: 'LOCAL',
-    description: `Dolores dolore vero vitae mollitia aut laboriosam neque. Officia qui libero rerum. Quia possimus dolore excepturi sed soluta. Voluptatem ipsa qui placeat et quia ut. Sed consectetur corrupti quod. Necessitatibus suscipit iste in.
+  try {
+    const fantasyCafe = await createCafe({
+      city: 'Pornic',
+      name: 'Le petit café fantaisiste',
+      type: 'LOCAL',
+      pic:
+        'https://moneycrashers-sparkchargemedia.netdna-ssl.com/wp-content/uploads/2011/11/used-books-stack.jpg',
+      description: `Dolores dolore vero vitae mollitia aut laboriosam neque. Officia qui libero rerum. Quia possimus dolore excepturi sed soluta. Voluptatem ipsa qui placeat et quia ut. Sed consectetur corrupti quod. Necessitatibus suscipit iste in.
   Architecto nisi in ratione. Tempore sit nisi qui non dolor. Ut adipisci amet nulla qui dolore eaque omnis. Aliquam voluptas officia modi maiores debitis nemo et. Ut ratione est dolor perferendis facilis nisi ut.`
-  });
+    });
 
-  const leMansCafe = await createCafe({
-    city: 'Le Mans',
-    name: 'Le petit Café du Mans',
-    type: 'LOCAL',
-    description: `Dolores dolore vero vitae mollitia aut laboriosam neque. Officia qui libero rerum. Quia possimus dolore excepturi sed soluta. Voluptatem ipsa qui placeat et quia ut. Sed consectetur corrupti quod. Necessitatibus suscipit iste in.
+    const leMansCafe = await createCafe({
+      city: 'Le Mans',
+      name: 'Le petit Café du Mans',
+      type: 'LOCAL',
+      pic:
+        'https://moneycrashers-sparkchargemedia.netdna-ssl.com/wp-content/uploads/2011/11/used-books-stack.jpg',
+
+      description: `Dolores dolore vero vitae mollitia aut laboriosam neque. Officia qui libero rerum. Quia possimus dolore excepturi sed soluta. Voluptatem ipsa qui placeat et quia ut. Sed consectetur corrupti quod. Necessitatibus suscipit iste in.
   Architecto nisi in ratione. Tempore sit nisi qui non dolor. Ut adipisci amet nulla qui dolore eaque omnis. Aliquam voluptas officia modi maiores debitis nemo et. Ut ratione est dolor perferendis facilis nisi ut.`
-  });
+    });
 
-  const nantesCafe = await createCafe({
-    city: 'Nantes',
-    name: 'Le petit café des nantaise',
-    type: 'LOCAL',
-    description: `Dolores dolore vero vitae mollitia aut laboriosam neque. Officia qui libero rerum. Quia possimus dolore excepturi sed soluta. Voluptatem ipsa qui placeat et quia ut. Sed consectetur corrupti quod. Necessitatibus suscipit iste in.
+    const nantesCafe = await createCafe({
+      city: 'Nantes',
+      name: 'Le petit café des nantaise',
+      type: 'LOCAL',
+      pic:
+        'https://moneycrashers-sparkchargemedia.netdna-ssl.com/wp-content/uploads/2011/11/used-books-stack.jpg',
+      description: `Dolores dolore vero vitae mollitia aut laboriosam neque. Officia qui libero rerum. Quia possimus dolore excepturi sed soluta. Voluptatem ipsa qui placeat et quia ut. Sed consectetur corrupti quod. Necessitatibus suscipit iste in.
   Architecto nisi in ratione. Tempore sit nisi qui non dolor. Ut adipisci amet nulla qui dolore eaque omnis. Aliquam voluptas officia modi maiores debitis nemo et. Ut ratione est dolor perferendis facilis nisi ut.`
-  });
+    });
 
-  const users = [martin, fiona, lisa, lucy];
-  const cafes = [fantasyCafe, leMansCafe, nantesCafe];
+    const users = [martin, fiona, lisa, lucy];
+    const cafes = [fantasyCafe, leMansCafe, nantesCafe];
 
-  await linkCafeToMeetups(linkCafeToMeetup)(fantasyCafe, [
-    meetupFantasyOne,
-    meetupFantasyTwo,
-    meetupFantasyThree
-  ]);
+    await linkCafeToMeetups(linkCafeToMeetup)(fantasyCafe, [
+      meetupFantasyOne,
+      meetupFantasyTwo,
+      meetupFantasyThree
+    ]);
 
-  await linkCafesToUsers(linkCafeToUser)(users, cafes);
+    await linkCafesToUsers(linkCafeToUser)(users, cafes);
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 main();

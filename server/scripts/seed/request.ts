@@ -18,8 +18,8 @@ export const createUserRequest = (sendFunction: Function) =>
 
 export const createCafeRequest = (sendFunction: Function) =>
   sendFunction({
-    query: `mutation CreateCafe($name: String, $description: String, $city: String){
-  CreateCafe(name: $name, description: $description, city: $city){
+    query: `mutation CreateCafe($name: String, $description: String, $city: String, $pic:String, $type: CafeTypeEnum){
+  CreateCafe(name: $name, description: $description, city: $city, pic: $pic, type: $type){
     name
     id
   }
@@ -56,7 +56,7 @@ export const linkCafeToUserRequest = (sendFunction: Function) =>
     `
   });
 
-  export const linkCafeToMeetupRequest = (sendFunction: Function) =>
+export const linkCafeToMeetupRequest = (sendFunction: Function) =>
   sendFunction({
     query: `mutation LinkCafeToMeetup($cafeId: ID!, $meetupId: ID!) {
       AddCafeMeetups(from: { id: $cafeId }, to: { id: $meetupId }) {

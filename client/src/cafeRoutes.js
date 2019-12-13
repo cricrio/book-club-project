@@ -1,4 +1,4 @@
-import {}from 'ramda';
+import * as R from 'ramda';
 import { InDevelopment } from './components/InDevelopment';
 import { CafePageInfo } from './components/CafePageInfo';
 
@@ -47,7 +47,4 @@ export const getCafeRoutes = cafeId => computeCafeRoutes(cafeId)(routes);
 const getRoute = name => R.find(R.propEq('name', name));
 
 export const getCafeRoutesRessourceUrl = cafeId => name =>
-  R.pipe(
-    getCafeRoutes(cafeId),
-    getRoute(name)
-  );
+  R.pipe(getCafeRoutes(cafeId), getRoute(name));
