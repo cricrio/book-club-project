@@ -4,16 +4,9 @@ import { Typography } from '@rmwc/typography';
 
 import { CafeImage } from './CafeImage';
 import { Chunk } from '../layout/Chunk';
-import { FullTime } from './FullTime';
 
 export const CafePageTop = ({
-  cafe: {
-    name,
-    pic,
-    city,
-    type,
-    meetups: { next }
-  }
+  cafe: { name, pic, city, type, memberCount }
 }) => (
   <Container className="CafePageTop">
     <CafeAlignImage src={pic} />
@@ -22,16 +15,12 @@ export const CafePageTop = ({
         <Typography use="headline5" tag="div">
           {name}
         </Typography>
-        <Typography use="subtitle1">
+        <Typography use="subtitle1" tag="div">
           {type === 'LOCAL' ? `${city} - groupe ${type}` : `groupe ${type}`}
         </Typography>
-      </Chunk>
-      <Chunk>
-        {next && (
-          <Typography use="subtitle1">
-            Prochaine rencontre le <FullTime date={next.date} />
-          </Typography>
-        )}
+        <Typography use="subtitle1" tag="div">
+          {memberCount} membres
+        </Typography>
       </Chunk>
     </div>
   </Container>

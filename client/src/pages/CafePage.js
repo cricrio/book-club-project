@@ -10,6 +10,7 @@ import { useCafeRoutes } from '../hooks/useCafeRoutes';
 
 export const CafePage = () => {
   const { cafe, loading, error } = useCafe();
+  console.log({ cafe });
   const routes = useCafeRoutes();
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
@@ -23,10 +24,12 @@ export const CafePage = () => {
       <CafePageTop cafe={cafe} />
       <CafeNav>
         {routes.map(({ name, path }) => (
-          <CafeNavLink to={path}>{name}</CafeNavLink>
+          <CafeNavLink to={path} key={name}>
+            {name}
+          </CafeNavLink>
         ))}
       </CafeNav>
-
+      {/*
       <Switch>
         {routes.reverse().map(({ Component, path, exact }) => (
           <Route exact={exact} path={path}>
@@ -34,6 +37,7 @@ export const CafePage = () => {
           </Route>
         ))}
       </Switch>
+      */}
     </PageContainer>
   );
 };
